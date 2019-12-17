@@ -1,4 +1,4 @@
-package main.java.stea1th.anagram;
+package stea1th.anagram;
 
 public class Main {
 
