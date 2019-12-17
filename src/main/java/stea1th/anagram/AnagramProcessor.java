@@ -19,20 +19,27 @@ public class AnagramProcessor {
 
     public void findAnagram() {
         Map<String, List<String>> words = wordsKeeper.getClonedWordsMap();
-        List<Pair<String, String>> result = new ArrayList<>();
-        for(String key : words.keySet()) {
-            List<String> wordsLetters =  new ArrayList<>();
-            int count = 0;
-            for(String letter : lettersKeeper.getClonedLetterList()) {
-                if(key.contains(letter)) {
+        for (String key : words.keySet()) {
+            List<String> wordsLetters = new ArrayList<>();
+            for (String letter : lettersKeeper.getClonedLetterList()) {
+                if (key.contains(letter) && !isThereDuplicate(key, letter)) {
                     wordsLetters.add(letter);
-                    count++;
                 }
             }
             int size = wordsLetters.size();
-            if(size > 4 && count == size) {
+            if (size > 4) {
                 System.out.println(key);
             }
         }
+    }
+
+    public boolean isThereDuplicate(String word, String letter) {
+        int count = 0;
+        for (int i = 0; i < word.length(); i++) {
+            if (letter.equals(word.substring(i, i + 1))) {
+                count++;
+            }
+        }
+        return count > 1;
     }
 }
