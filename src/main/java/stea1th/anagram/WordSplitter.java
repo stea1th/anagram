@@ -9,5 +9,4 @@ public class WordSplitter {
         String[] array = word.split("");
         return Arrays.asList(array);
     }
-
 }
