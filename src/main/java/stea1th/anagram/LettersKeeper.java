@@ -3,11 +3,11 @@ package stea1th.anagram;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LetterKeeper {
+public class LettersKeeper {
 
     private List<String> letters;
 
-    public LetterKeeper(List<String> letters) {
+    public LettersKeeper(List<String> letters) {
         this.letters = letters;
     }
 
