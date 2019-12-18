@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class WordSplitter {
+public class StringSplitter {
 
     public List<String> splitStringToLetters(String word) {
         String[] array = word.split("");

@@ -1,8 +1,6 @@
 package stea1th.anagram;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordGenerator {
 
@@ -14,7 +12,13 @@ public class WordGenerator {
         this.keeper = keeper;
     }
 
-    public void generateIt(int size) {
+    List<String> getSortedGeneratedWords() {
+        List<String> list = new ArrayList<>(generatedWords);
+        Collections.sort(list);
+        return list;
+    }
+
+    public void generate(int size) {
         List<String> letters = keeper.getClonedLetterList();
 
         for (String letter : letters) {
@@ -24,12 +28,11 @@ public class WordGenerator {
         }
     }
 
-    public GeneratedWord generate(GeneratedWord generatedWord) {
+    private GeneratedWord generate(GeneratedWord generatedWord) {
         int size = generatedWord.getPosition();
         if (size > 1) {
             List<String> letters = keeper.getClonedLetterList();
-            for (int i = 0; i < letters.size(); i++) {
-                String letter = letters.get(i);
+            for (String letter : letters) {
                 size = generatedWord.getPosition();
                 String word = generatedWord.getValue(size);
                 int repeatedLetter = keeper.getRepeatedLetters().get(letter);
@@ -47,9 +50,5 @@ public class WordGenerator {
         }
         generatedWord.setPosition(generatedWord.getPosition() + 1);
         return generatedWord;
-    }
-
-    public Set<String> getGeneratedWords() {
-        return generatedWords;
     }
 }

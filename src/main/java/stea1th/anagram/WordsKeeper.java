@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class WordsKeeper {
 
-
     private Map<String, List<String>> words;
 
     public WordsKeeper(Map<String, List<String>> words) {

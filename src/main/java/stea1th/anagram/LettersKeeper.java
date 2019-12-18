@@ -35,6 +35,10 @@ public class LettersKeeper {
         return count;
     }
 
+    public int getLettersSize() {
+        return letters.size();
+    }
+
     private Map<String, Integer> findAllRepeatedLetters(List<String> letters) {
         return letters.parallelStream().
                 collect(Collectors.toConcurrentMap(
