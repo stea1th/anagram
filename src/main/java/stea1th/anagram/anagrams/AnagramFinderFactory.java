@@ -16,14 +16,12 @@ public class AnagramFinderFactory {
     }
 
     public AnagramFinder createAnagramFinder(int words) {
-        AnagramFinder finder;
         switch(words) {
+            case 1:
+                return new SingleAnagramFinder(lettersKeeper, wordsKeeper);
             case 2:
             default:
-                finder = new DoubleAnagramFinder(lettersKeeper, wordsKeeper);
-
+                return new DoubleAnagramFinder(lettersKeeper, wordsKeeper);
         }
-        return finder;
     }
-
 }

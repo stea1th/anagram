@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface AnagramFinder {
 
-    List<String> find(int start, int end);
+    List<String> find(int start, int end, boolean isSameWordLength);
 }
