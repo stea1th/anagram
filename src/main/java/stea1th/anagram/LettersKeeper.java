@@ -14,7 +14,6 @@ public class LettersKeeper {
     public LettersKeeper(List<String> letters) {
         this.letters = letters;
         this.repeatedLetters = findAllRepeatedLetters(letters);
-
     }
 
     public List<String> getClonedLetterList() {

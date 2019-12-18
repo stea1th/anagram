@@ -13,13 +13,8 @@ public class Main {
         Map<String, List<String>> words = splitter.splitLinesToWordsMap(lines);
         LettersKeeper lettersKeeper = new LettersKeeper(letters);
 
-//        List<String> list = new ArrayList<>(generator.getGeneratedWords());
-//        Collections.sort(list);
-//        list.forEach(System.out::println);
-//        System.out.println(list.size());
-
         WordsKeeper wordsKeeper = new WordsKeeper(words);
         AnagramProcessor processor = new AnagramProcessor(lettersKeeper, wordsKeeper);
-        processor.findDoubleWordAnagram(3, 7);
+        processor.findAnagrams(3, 7).forEach(System.out::println);
     }
 }
