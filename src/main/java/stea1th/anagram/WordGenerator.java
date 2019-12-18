@@ -22,33 +22,30 @@ public class WordGenerator {
             generatedWord.putValue(size, letter);
             generate(generatedWord);
         }
-
     }
 
-    public boolean generate(GeneratedWord generatedWord) {
+    public GeneratedWord generate(GeneratedWord generatedWord) {
         int size = generatedWord.getPosition();
-        if(size > 1) {
+        if (size > 1) {
             List<String> letters = keeper.getClonedLetterList();
-            for (int i = 0; i < letters.size() ; i++){
+            for (int i = 0; i < letters.size(); i++) {
                 String letter = letters.get(i);
                 size = generatedWord.getPosition();
                 String word = generatedWord.getValue(size);
                 if (!word.contains(letter)) {
                     word += letter;
-                    if(!generatedWords.contains(word)) {
+                    if (!generatedWords.contains(word)) {
                         generatedWord.setPosition(--size);
                         generatedWord.putValue(size, word);
-                        if(generate(generatedWord)) i = 0;
+                        generatedWord = generate(generatedWord);
                     }
                 }
             }
-            generatedWord.setPosition(++size);
-            return true;
-        } else if(size == 1){
+        } else if (size == 1) {
             generatedWords.add(generatedWord.getValue(size));
         }
-        generatedWord.setPosition(++size);
-        return false;
+        generatedWord.setPosition(generatedWord.getPosition() + 1);
+        return generatedWord;
     }
 
     public Set<String> getGeneratedWords() {
