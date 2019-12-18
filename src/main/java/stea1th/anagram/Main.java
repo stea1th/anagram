@@ -18,7 +18,7 @@ public class Main {
 //        AnagramProcessor processor = new AnagramProcessor(lettersKeeper, wordsKeeper);
 //        processor.findAnagram();
         WordGenerator generator = new WordGenerator(lettersKeeper);
-        generator.generateIt(4);
+        generator.generateIt(3);
         List<String> list = new ArrayList<>(generator.getGeneratedWords());
         Collections.sort(list);
         list.forEach(w-> System.out.println(w));

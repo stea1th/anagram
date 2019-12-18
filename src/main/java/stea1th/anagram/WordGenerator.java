@@ -32,7 +32,8 @@ public class WordGenerator {
                 String letter = letters.get(i);
                 size = generatedWord.getPosition();
                 String word = generatedWord.getValue(size);
-                if (!word.contains(letter)) {
+                int repeatedLetter = keeper.getRepeatedLetters().get(letter);
+                if (!word.contains(letter) || repeatedLetter > keeper.countLettersInWord(word, letter)) {
                     word += letter;
                     if (!generatedWords.contains(word)) {
                         generatedWord.setPosition(--size);
