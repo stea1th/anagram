@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ResourceReader {
 
@@ -12,7 +13,7 @@ public class ResourceReader {
         List<String> lines = new ArrayList<>();
         try {
             ClassLoader classLoader = this.getClass().getClassLoader();
-            lines = Files.readAllLines(Paths.get(new File(classLoader.getResource("words.txt").getFile()).getPath()));
+            lines = Files.readAllLines(Paths.get(new File(Objects.requireNonNull(classLoader.getResource("words.txt")).getFile()).getPath()));
         } catch (Exception e) {
             e.printStackTrace();
         }

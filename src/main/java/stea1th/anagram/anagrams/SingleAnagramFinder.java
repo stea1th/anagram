@@ -8,12 +8,12 @@ import java.util.List;
 public class SingleAnagramFinder extends AnagramFinderBase {
 
 
-    public SingleAnagramFinder(LettersKeeper lettersKeeper, WordsKeeper wordsKeeper) {
+    SingleAnagramFinder(LettersKeeper lettersKeeper, WordsKeeper wordsKeeper) {
         super(lettersKeeper, wordsKeeper);
     }
 
     @Override
     public List<String> find(int start, int end, boolean isSameWordLength) {
-        return findAnagrams(start, end, isSameWordLength);
+        return findLastAnagram(start, end, isSameWordLength);
     }
 }

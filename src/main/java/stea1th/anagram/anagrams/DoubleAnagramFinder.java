@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class DoubleAnagramFinder extends AnagramFinderBase {
 
-    public DoubleAnagramFinder(LettersKeeper lettersKeeper, WordsKeeper wordsKeeper) {
+    DoubleAnagramFinder(LettersKeeper lettersKeeper, WordsKeeper wordsKeeper) {
         super(lettersKeeper, wordsKeeper);
     }
 
@@ -33,9 +33,7 @@ public class DoubleAnagramFinder extends AnagramFinderBase {
                         LettersKeeper newLettersKeeper = new LettersKeeper(list);
                         List<String> secondWords = getSecondWordsForAnagram(newStart, newEnd, isSameWordLength, newLettersKeeper);
                         if (!secondWords.isEmpty()) {
-                            secondWords.forEach(w -> {
-                                result.add(word + " " + w);
-                            });
+                            secondWords.forEach(w -> result.add(word + " " + w));
                         }
                     });
         }
@@ -43,6 +41,6 @@ public class DoubleAnagramFinder extends AnagramFinderBase {
     }
 
     private List<String> getSecondWordsForAnagram(int start, int end, boolean isSameWordLength, LettersKeeper letKeeper) {
-        return findAnagrams(start, end, isSameWordLength, letKeeper);
+        return findLastAnagram(start, end, isSameWordLength, letKeeper);
     }
 }

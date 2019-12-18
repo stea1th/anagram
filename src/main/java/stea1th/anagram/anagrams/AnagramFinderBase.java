@@ -26,7 +26,7 @@ public abstract class AnagramFinderBase implements AnagramFinder {
 
     public abstract List<String> find(int start, int end, boolean isSameWordLength);
 
-    List<String> findAnagrams(int start, int end, boolean isSameWordLength, LettersKeeper letKeeper) {
+    List<String> findLastAnagram(int start, int end, boolean isSameWordLength, LettersKeeper letKeeper) {
         start = anagramHelper.checkStart(start);
         end = anagramHelper.checkEnd(end, letKeeper);
         Map<String, List<String>> wordsMap = wordsKeeper.getClonedWordsMap();
@@ -50,7 +50,7 @@ public abstract class AnagramFinderBase implements AnagramFinder {
         return result;
     }
 
-    List<String> findAnagrams(int start, int end, boolean isSameWordLength) {
-        return findAnagrams(start, end, isSameWordLength, lettersKeeper);
+    List<String> findLastAnagram(int start, int end, boolean isSameWordLength) {
+        return findLastAnagram(start, end, isSameWordLength, lettersKeeper);
     }
 }

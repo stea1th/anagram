@@ -25,7 +25,7 @@ public class Main {
         WordsKeeper wordsKeeper = new WordsKeeper(words);
 
         AnagramFinderFactory factory = new AnagramFinderFactory(lettersKeeper, wordsKeeper);
-        AnagramFinder finder = factory.createAnagramFinder(1);
-        finder.find(3, 7, false).forEach(System.out::println);
+        AnagramFinder finder = factory.createAnagramFinder(2);
+        finder.find(3, 7, true).forEach(System.out::println);
     }
 }
