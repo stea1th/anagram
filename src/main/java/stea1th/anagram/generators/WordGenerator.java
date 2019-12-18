@@ -1,4 +1,7 @@
-package stea1th.anagram;
+package stea1th.anagram.generators;
+
+import stea1th.anagram.keepers.LettersKeeper;
+import stea1th.anagram.transport.GeneratedWord;
 
 import java.util.*;
 
@@ -12,7 +15,7 @@ public class WordGenerator {
         this.keeper = keeper;
     }
 
-    List<String> getSortedGeneratedWords() {
+    public List<String> getSortedGeneratedWords() {
         List<String> list = new ArrayList<>(generatedWords);
         Collections.sort(list);
         return list;

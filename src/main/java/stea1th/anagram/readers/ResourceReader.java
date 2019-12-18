@@ -1,4 +1,4 @@
-package stea1th.anagram;
+package stea1th.anagram.readers;
 
 import java.io.File;
 import java.nio.file.Files;

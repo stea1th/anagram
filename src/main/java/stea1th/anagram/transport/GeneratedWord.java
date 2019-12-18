@@ -1,4 +1,4 @@
-package stea1th.anagram;
+package stea1th.anagram.transport;
 
 import java.util.HashMap;
 import java.util.Map;

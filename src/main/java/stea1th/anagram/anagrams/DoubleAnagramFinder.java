@@ -1,26 +1,28 @@
-package stea1th.anagram;
+package stea1th.anagram.anagrams;
+
+import stea1th.anagram.keepers.LettersKeeper;
+import stea1th.anagram.generators.WordGenerator;
+import stea1th.anagram.keepers.WordsKeeper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class AnagramProcessor {
+public class DoubleAnagramFinder extends AnagramFinderBase {
 
-    private LettersKeeper lettersKeeper;
-
-    private WordsKeeper wordsKeeper;
-
-
-    public AnagramProcessor(LettersKeeper lettersKeeper, WordsKeeper wordsKeeper) {
-        this.lettersKeeper = lettersKeeper;
-        this.wordsKeeper = wordsKeeper;
+    public DoubleAnagramFinder(LettersKeeper lettersKeeper, WordsKeeper wordsKeeper) {
+        super(lettersKeeper, wordsKeeper);
     }
 
+    @Override
+    public List<String> find(int start, int end) {
+        return findAnagrams(start, end);
+    }
 
-    public List<String> findAnagrams(int start, int end) {
-        int newStart = checkStart(start);
-        int newEnd = checkEnd(end, lettersKeeper);
+    private List<String> findAnagrams(int start, int end) {
+        int newStart = anagramHelper.checkStart(start);
+        int newEnd = anagramHelper.checkEnd(end, lettersKeeper);
         Map<String, List<String>> wordsMap = wordsKeeper.getClonedWordsMap();
         Set<String> words = wordsMap.keySet();
         List<String> result = new ArrayList<>();
@@ -31,7 +33,7 @@ public class AnagramProcessor {
             generated.stream()
                     .filter(words::contains)
                     .forEach(word -> {
-                        List<String> list = removeExistingLetters(lettersKeeper.getClonedLetterList(), wordsMap.get(word));
+                        List<String> list = anagramHelper.removeExistingLetters(lettersKeeper.getClonedLetterList(), wordsMap.get(word));
                         StringBuilder stringBuilder = new StringBuilder(word);
                         LettersKeeper newLettersKeeper = new LettersKeeper(list);
                         List<String> secondWords = getSecondWordsForAnagram(newStart, newEnd, newLettersKeeper);
@@ -47,7 +49,7 @@ public class AnagramProcessor {
     }
 
     private List<String> getSecondWordsForAnagram(int start, int end, LettersKeeper letKeeper) {
-        end = checkEnd(end, letKeeper);
+        end = anagramHelper.checkEnd(end, letKeeper);
         Map<String, List<String>> wordsMap = wordsKeeper.getClonedWordsMap();
         Set<String> words = wordsMap.keySet();
         List<String> result = new ArrayList<>();
@@ -58,7 +60,7 @@ public class AnagramProcessor {
             generated.stream()
                     .filter(words::contains)
                     .forEach(word -> {
-                        List<String> list = removeExistingLetters(letKeeper.getClonedLetterList(), wordsMap.get(word));
+                        List<String> list = anagramHelper.removeExistingLetters(letKeeper.getClonedLetterList(), wordsMap.get(word));
                         if (list.isEmpty()) {
                             result.add(word);
                         }
@@ -66,18 +68,4 @@ public class AnagramProcessor {
         }
         return result;
     }
-
-    private int checkEnd(int end, LettersKeeper letKeeper) {
-        return Math.min(end, letKeeper.getLettersSize());
-    }
-
-    private int checkStart(int start) {
-        return Math.max(start, 3);
-    }
-
-    private List<String> removeExistingLetters(List<String> allLetters, List<String> existingLetters) {
-        allLetters.removeAll(existingLetters);
-        return allLetters;
-    }
-
 }
