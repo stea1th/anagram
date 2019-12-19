@@ -16,7 +16,7 @@ public class AnagramFinderFactory {
     }
 
     public AnagramFinder createAnagramFinder(int words) {
-        switch(words) {
+        switch (words) {
             case 1:
                 return new SingleAnagramFinder(lettersKeeper, wordsKeeper);
             case 2:

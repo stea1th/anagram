@@ -36,7 +36,7 @@ public abstract class AnagramFinderBase implements AnagramFinder {
             WordGenerator generator = new WordGenerator(letKeeper);
             generator.generate(i);
             List<String> generated = generator.getSortedGeneratedWords();
-            generated.stream()
+            generated.parallelStream()
                     .filter(words::contains)
                     .forEach(word -> {
                         List<String> list = anagramHelper.removeExistingLetters(letKeeper.getClonedLetterList(), wordsMap.get(word));

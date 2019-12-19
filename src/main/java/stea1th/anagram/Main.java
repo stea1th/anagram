@@ -18,9 +18,9 @@ public class Main {
         Stopwatch stopwatch = Stopwatch.createStarted();
         StringSplitter splitter = new StringSplitter();
 
-//        String word = "documenting";
+        String word = "documenting";
 //        String word = "documentingaaeer";
-        String word = "mammalinvite";
+//        String word = "mammalinvite";
         List<String> letters = splitter.splitStringToLetters(word);
         LettersKeeper lettersKeeper = new LettersKeeper(letters);
 
@@ -30,7 +30,7 @@ public class Main {
 
         AnagramFinderFactory factory = new AnagramFinderFactory(lettersKeeper, wordsKeeper);
         AnagramFinder finder = factory.createAnagramFinder(2);
-        List<String> result = finder.find(3, 7, true);
+        List<String> result = finder.find(3, 7, false);
 
         result.forEach(System.out::println);
         stopwatch.stop();

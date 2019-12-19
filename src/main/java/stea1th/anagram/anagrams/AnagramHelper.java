@@ -19,7 +19,6 @@ class AnagramHelper {
     List<String> removeExistingLetters(List<String> allLetters, List<String> existingLetters) {
         existingLetters.forEach(allLetters::remove);
         return allLetters;
-
     }
 
     String compareWords(String word1, String word2) {

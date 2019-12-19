@@ -23,7 +23,7 @@ public class DoubleAnagramFinder extends AnagramFinderBase {
             WordGenerator generator = new WordGenerator(lettersKeeper);
             generator.generate(i);
             List<String> generated = generator.getSortedGeneratedWords();
-            generated.stream()
+            generated.parallelStream()
                     .filter(words::contains)
                     .forEach(word -> {
                         List<String> list = anagramHelper.removeExistingLetters(lettersKeeper.getClonedLetterList(), wordsMap.get(word));
