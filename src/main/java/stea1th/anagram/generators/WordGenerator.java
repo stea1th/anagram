@@ -1,7 +1,7 @@
 package stea1th.anagram.generators;
 
 import stea1th.anagram.keepers.LettersKeeper;
-import stea1th.anagram.transport.GeneratedWord;
+import stea1th.anagram.transports.GeneratedWord;
 
 import java.util.*;
 
