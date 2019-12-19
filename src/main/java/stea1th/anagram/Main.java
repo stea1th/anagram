@@ -3,7 +3,7 @@ package stea1th.anagram;
 import com.google.common.base.Stopwatch;
 import stea1th.anagram.anagrams.AnagramFinder;
 import stea1th.anagram.anagrams.AnagramFinderFactory;
-import stea1th.anagram.helper.StringSplitter;
+import stea1th.anagram.helpers.StringSplitter;
 import stea1th.anagram.keepers.LettersKeeper;
 import stea1th.anagram.keepers.WordsKeeper;
 import stea1th.anagram.readers.ResourceReader;

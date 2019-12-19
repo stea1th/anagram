@@ -1,4 +1,4 @@
-package stea1th.anagram.helper;
+package stea1th.anagram.helpers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
