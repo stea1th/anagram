@@ -4,10 +4,7 @@ import stea1th.anagram.keepers.LettersKeeper;
 import stea1th.anagram.generators.WordGenerator;
 import stea1th.anagram.keepers.WordsKeeper;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DoubleAnagramFinder extends AnagramFinderBase {
 
@@ -21,7 +18,7 @@ public class DoubleAnagramFinder extends AnagramFinderBase {
         int newEnd = anagramHelper.checkEnd(end, lettersKeeper);
         Map<String, List<String>> wordsMap = wordsKeeper.getClonedWordsMap();
         Set<String> words = wordsMap.keySet();
-        List<String> result = new ArrayList<>();
+        Set<String> result = new HashSet<>();
         for (int i = newStart; i <= newEnd; i++) {
             WordGenerator generator = new WordGenerator(lettersKeeper);
             generator.generate(i);
@@ -33,11 +30,11 @@ public class DoubleAnagramFinder extends AnagramFinderBase {
                         LettersKeeper newLettersKeeper = new LettersKeeper(list);
                         List<String> secondWords = getSecondWordsForAnagram(newStart, newEnd, isSameWordLength, newLettersKeeper);
                         if (!secondWords.isEmpty()) {
-                            secondWords.forEach(w -> result.add(word + " " + w));
+                            secondWords.forEach(w -> result.add(anagramHelper.compareWords(word, w)));
                         }
                     });
         }
-        return result;
+        return new ArrayList<>(result);
     }
 
     private List<String> getSecondWordsForAnagram(int start, int end, boolean isSameWordLength, LettersKeeper letKeeper) {

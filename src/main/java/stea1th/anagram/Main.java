@@ -1,5 +1,6 @@
 package stea1th.anagram;
 
+import com.google.common.base.Stopwatch;
 import stea1th.anagram.anagrams.AnagramFinder;
 import stea1th.anagram.anagrams.AnagramFinderFactory;
 import stea1th.anagram.helper.StringSplitter;
@@ -14,18 +15,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String word = "documenting";
-
-        List<String> lines = new ResourceReader().getLines();
+        Stopwatch stopwatch = Stopwatch.createStarted();
         StringSplitter splitter = new StringSplitter();
 
+//        String word = "documenting";
+//        String word = "documentingaaeer";
+        String word = "mammalinvite";
         List<String> letters = splitter.splitStringToLetters(word);
-        Map<String, List<String>> words = splitter.splitLinesToWordsMap(lines);
         LettersKeeper lettersKeeper = new LettersKeeper(letters);
+
+        List<String> lines = new ResourceReader().getLines();
+        Map<String, List<String>> words = splitter.splitLinesToWordsMap(lines);
         WordsKeeper wordsKeeper = new WordsKeeper(words);
 
         AnagramFinderFactory factory = new AnagramFinderFactory(lettersKeeper, wordsKeeper);
         AnagramFinder finder = factory.createAnagramFinder(2);
-        finder.find(3, 7, true).forEach(System.out::println);
+        List<String> result = finder.find(3, 7, true);
+
+        result.forEach(System.out::println);
+        stopwatch.stop();
+        System.out.println(stopwatch.toString());
     }
 }
