@@ -7,12 +7,12 @@ import java.util.*;
 
 public class WordGenerator {
 
-    private LettersKeeper keeper;
+    private LettersKeeper lettersKeeper;
 
     private Set<String> generatedWords = new HashSet<>();
 
-    public WordGenerator(LettersKeeper keeper) {
-        this.keeper = keeper;
+    public WordGenerator(LettersKeeper lettersKeeper) {
+        this.lettersKeeper = lettersKeeper;
     }
 
     public List<String> getSortedGeneratedWords() {
@@ -22,7 +22,7 @@ public class WordGenerator {
     }
 
     public void generate(int size) {
-        List<String> letters = keeper.getClonedLetterList();
+        List<String> letters = lettersKeeper.getClonedLetterList();
 
         for (String letter : letters) {
             GeneratedWord generatedWord = new GeneratedWord(size);
@@ -34,12 +34,12 @@ public class WordGenerator {
     private GeneratedWord generate(GeneratedWord generatedWord) {
         int size = generatedWord.getPosition();
         if (size > 1) {
-            List<String> letters = keeper.getClonedLetterList();
+            List<String> letters = lettersKeeper.getClonedLetterList();
             for (String letter : letters) {
                 size = generatedWord.getPosition();
                 String word = generatedWord.getValue(size);
-                int repeatedLetter = keeper.getRepeatedLetters().get(letter);
-                if (!word.contains(letter) || repeatedLetter > keeper.countLettersInWord(word, letter)) {
+                int repeatedLetter = lettersKeeper.getRepeatedLetters().get(letter);
+                if (!word.contains(letter) || repeatedLetter > lettersKeeper.countLettersInWord(word, letter)) {
                     word += letter;
                     if (!generatedWords.contains(word)) {
                         generatedWord.setPosition(--size);

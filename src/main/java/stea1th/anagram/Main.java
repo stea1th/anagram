@@ -19,8 +19,10 @@ public class Main {
         StringSplitter splitter = new StringSplitter();
 
         String word = "documenting";
+//        String word = "documentingeagle";
 //        String word = "documentingaaeer";
-//        String word = "mammalinvite";
+//        String word = "includeprodigy";
+//        String word = "jetjob";
         List<String> letters = splitter.splitStringToLetters(word);
         LettersKeeper lettersKeeper = new LettersKeeper(letters);
 
@@ -30,9 +32,10 @@ public class Main {
 
         AnagramFinderFactory factory = new AnagramFinderFactory(lettersKeeper, wordsKeeper);
         AnagramFinder finder = factory.createAnagramFinder(2);
-        List<String> result = finder.find(3, 7, false);
+        List<String> result = finder.find(3, 7, true);
 
         result.forEach(System.out::println);
+
         stopwatch.stop();
         System.out.println(stopwatch.toString());
     }
