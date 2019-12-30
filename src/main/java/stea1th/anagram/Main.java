@@ -19,10 +19,7 @@ public class Main {
         StringSplitter splitter = new StringSplitter();
 
         String word = "documenting";
-//        String word = "documentingeagle";
-//        String word = "documentingaaeer";
-//        String word = "includeprodigy";
-//        String word = "jetjob";
+
         List<String> letters = splitter.splitStringToLetters(word);
         LettersKeeper lettersKeeper = new LettersKeeper(letters);
 
