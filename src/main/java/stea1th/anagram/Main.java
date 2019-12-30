@@ -32,7 +32,7 @@ public class Main {
 
         AnagramFinderFactory factory = new AnagramFinderFactory(lettersKeeper, wordsKeeper);
         AnagramFinder finder = factory.createAnagramFinder(2);
-        List<String> result = finder.find(3, 7, true);
+        List<String> result = finder.find(3, 7, false);
 
         result.forEach(System.out::println);
 
