@@ -1,6 +1,7 @@
 package stea1th.anagram;
 
 import stea1th.anagram.keepers.LettersKeeper;
+import stea1th.anagram.keepers.WordsKeeper;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,6 +16,10 @@ public class TestDataGenerator {
 
     public static LettersKeeper createLettersKeeper() {
         return new LettersKeeper(createLetters());
+    }
+
+    public static WordsKeeper createWordsKeeper() {
+        return new WordsKeeper(createWordMap());
     }
 
     public static Map<String, List<String>> createWordMap() {
