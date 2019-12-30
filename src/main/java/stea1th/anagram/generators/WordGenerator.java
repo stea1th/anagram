@@ -15,23 +15,28 @@ public class WordGenerator {
         this.lettersKeeper = lettersKeeper;
     }
 
-    public List<String> getSortedGeneratedWords() {
+    public List<String> getSortedGeneratedWords(int size) {
+        generateWords(size);
+        return sortWords();
+    }
+
+    private List<String> sortWords() {
         List<String> list = new ArrayList<>(generatedWords);
         Collections.sort(list);
         return list;
     }
 
-    public void generate(int size) {
+    private void generateWords(int size) {
         List<String> letters = lettersKeeper.getClonedLetterList();
 
         for (String letter : letters) {
             GeneratedWord generatedWord = new GeneratedWord(size);
             generatedWord.putValue(size, letter);
-            generate(generatedWord);
+            generateWords(generatedWord);
         }
     }
 
-    private GeneratedWord generate(GeneratedWord generatedWord) {
+    private GeneratedWord generateWords(GeneratedWord generatedWord) {
         int size = generatedWord.getPosition();
         if (size > 1) {
             List<String> letters = lettersKeeper.getClonedLetterList();
@@ -44,7 +49,7 @@ public class WordGenerator {
                     if (!generatedWords.contains(word)) {
                         generatedWord.setPosition(--size);
                         generatedWord.putValue(size, word);
-                        generatedWord = generate(generatedWord);
+                        generatedWord = generateWords(generatedWord);
                     }
                 }
             }

@@ -21,8 +21,7 @@ public class DoubleAnagramFinder extends AnagramFinderBase {
         Set<String> result = new HashSet<>();
         for (int i = newStart; i <= newEnd; i++) {
             WordGenerator generator = new WordGenerator(lettersKeeper);
-            generator.generate(i);
-            List<String> generated = generator.getSortedGeneratedWords();
+            List<String> generated = generator.getSortedGeneratedWords(i);
             generated.parallelStream()
                     .filter(words::contains)
                     .forEach(word -> {

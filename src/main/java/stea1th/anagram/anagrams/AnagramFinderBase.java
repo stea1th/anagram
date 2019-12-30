@@ -34,8 +34,7 @@ public abstract class AnagramFinderBase implements AnagramFinder {
         List<String> result = new ArrayList<>();
         for (int i = start; i <= end; i++) {
             WordGenerator generator = new WordGenerator(letKeeper);
-            generator.generate(i);
-            List<String> generated = generator.getSortedGeneratedWords();
+            List<String> generated = generator.getSortedGeneratedWords(i);
             generated.parallelStream()
                     .filter(words::contains)
                     .forEach(word -> {
